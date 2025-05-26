@@ -1,4 +1,4 @@
-ami                         = "ami-0953476d60561c955"
+ami                         = "ami-084568db4383264d4"
 availability_zone           = "us-east-1a"
 vpc_cidr_block              = "10.0.0.0/16"
 subnet_cidr_block           = "10.0.1.0/24"
@@ -9,7 +9,7 @@ rt_Name                     = "Jenkins_rt"
 sg_name                     = "Jenkins_sg"
 ec2_name                    = "Jenkins_ec2"
 subnet_name                 = "Jenkins_subnet"
-instance_type               = "t2.micro"
+instance_type               = "t2.medium"
 key_name                    = "kube-demo"
 
 ingress_rules = [ {
@@ -27,6 +27,11 @@ ingress_rules = [ {
   {
     from_port   = 443
     to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  },{
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }]
